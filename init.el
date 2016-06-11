@@ -2,7 +2,10 @@
 ;; load paths
 ;;;;;;;;;;;;;;;;;;;;;;;;
 (let ((default-directory  "~/.emacs.d/lisp/"))
-  (normal-top-level-add-to-load-path '("emacs-neotree" "column-marker")))
+  (normal-top-level-add-to-load-path '("emacs-neotree" 
+				       "column-marker"
+				       "emacs-bash-completion")))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; neotree
@@ -85,6 +88,14 @@
 (add-hook 'emacs-lisp-mode-hook 
 	  (lambda () 
 	    (interactive) (column-marker-1 80)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; bash
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'bash-completion)
+(bash-completion-setup)
+(global-set-key [f7] 'shell)
+
 
 
 
