@@ -42,6 +42,13 @@
 
 (global-set-key (kbd "C-c o") 'ff-find-other-file)
 
+(global-set-key (kbd "C-x 4") (function (lambda ()
+					  (interactive)
+					  (delete-other-windows)
+					  (split-window-vertically)
+					  (split-window-horizontally)
+					  (windmove-down)
+					  (split-window-horizontally))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; javascript
