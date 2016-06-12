@@ -3,8 +3,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 (let ((default-directory  "~/.emacs.d/lisp/"))
   (normal-top-level-add-to-load-path '("emacs-neotree" 
-				       "column-marker"
-				       "emacs-bash-completion")))
+                                       "column-marker"
+                                       "emacs-bash-completion")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -23,7 +23,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'whitespace)
 (setq tab-width 2)
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 (setq column-number-mode t)
 (setq whitespace-style '(spaces tabs newline space-mark tab-mark newline-mark))
 (global-whitespace-mode 1)
@@ -43,58 +43,58 @@
 (global-set-key (kbd "C-c o") 'ff-find-other-file)
 
 (global-set-key (kbd "C-x 4") (function (lambda ()
-					  (interactive)
-					  (delete-other-windows)
-					  (split-window-vertically)
-					  (split-window-horizontally)
-					  (windmove-down)
-					  (split-window-horizontally))))
+                                          (interactive)
+                                          (delete-other-windows)
+                                          (split-window-vertically)
+                                          (split-window-horizontally)
+                                          (windmove-down)
+                                          (split-window-horizontally))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; javascript
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq js-indent-level 2)
 (add-hook 'js-mode-hook 
-	  (lambda () 
-	    (interactive) (column-marker-1 80)))
+          (lambda () 
+            (interactive) (column-marker-1 80)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; c mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq c-basic-indent 2)
 (add-hook 'c-mode-common-hook 
-	  (lambda () 
-	    (c-set-offset 'inline-open 0)
-	    (c-set-offset 'substatement-open 0)))
+          (lambda () 
+            (c-set-offset 'inline-open 0)
+            (c-set-offset 'substatement-open 0)))
 (add-hook 'c-mode-hook 
-	  (lambda () 
-	    (interactive) (column-marker-1 80)))
+          (lambda () 
+            (interactive) (column-marker-1 80)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; c++ mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-hook 'c++-mode-hook 
-	  (lambda () 
-	    (c-set-offset 'innamespace 0)))
+          (lambda () 
+            (c-set-offset 'innamespace 0)))
 (add-hook 'c++-mode-hook 
-	  (lambda () 
-	    (interactive) (column-marker-1 80)))
+          (lambda () 
+            (interactive) (column-marker-1 80)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'python-mode-hook 
-	  (lambda () 
-	    (interactive) (column-marker-1 80)))
+          (lambda () 
+            (interactive) (column-marker-1 80)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emacs lisp mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'emacs-lisp-mode-hook 
-	  (lambda () 
-	    (interactive) (column-marker-1 80)))
+          (lambda () 
+            (interactive) (column-marker-1 80)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bash
