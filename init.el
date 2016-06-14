@@ -26,7 +26,9 @@
 (setq-default indent-tabs-mode nil)
 (setq column-number-mode t)
 (setq whitespace-style '(spaces tabs newline space-mark tab-mark newline-mark))
-(global-whitespace-mode 1)
+;(global-whitespace-toggle-options 1)
+;(global-whitespace-mode 1)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; navigation
@@ -49,6 +51,13 @@
                                           (split-window-horizontally)
                                           (windmove-down)
                                           (split-window-horizontally))))
+
+(global-set-key (kbd "C-x SPC") (function (lambda () 
+                                            (interactive) 
+                                            (whitespace-mode 1))))
+(global-set-key (kbd "C-c SPC") (function (lambda () 
+                                            (interactive) 
+                                            (whitespace-mode 0))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; javascript
