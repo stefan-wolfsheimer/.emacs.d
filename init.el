@@ -4,7 +4,8 @@
 (let ((default-directory  "~/.emacs.d/lisp/"))
   (normal-top-level-add-to-load-path '("emacs-neotree" 
                                        "column-marker"
-                                       "emacs-bash-completion")))
+                                       "emacs-bash-completion"
+                                       "js2-mode")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -12,6 +13,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
+(setq neo-window-width 60)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; column-marker
@@ -62,6 +65,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; javascript
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'js2-mode)
+(require 'js2-imenu-extras)
+(add-to-list
+ 'auto-mode-alist
+ '("\\.js\\'" . js2-mode))
 (setq js-indent-level 2)
 (add-hook 'js-mode-hook 
           (lambda () 
