@@ -1,6 +1,3 @@
-[submodule "lisp/emacs-neotree"]
-	path = lisp/emacs-neotree
-	url = https://github.com/jaypei/emacs-neotree.git
 [submodule "lisp/emacs-bash-completion"]
 	path = lisp/emacs-bash-completion
 	url = https://github.com/szermatt/emacs-bash-completion.git
