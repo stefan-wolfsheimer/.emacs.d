@@ -93,7 +93,7 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-hook 'c++-mode-hook 
           (lambda () 
-            (c-set-offset 'innamespace 0)))
+            (c-set-offset 'innamespace 2)))
 (add-hook 'c++-mode-hook 
           (lambda () 
             (interactive) (column-marker-1 80)))
