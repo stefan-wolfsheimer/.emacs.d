@@ -5,7 +5,11 @@
   (normal-top-level-add-to-load-path '("emacs-neotree" 
                                        "column-marker"
                                        "emacs-bash-completion"
-                                       "js2-mode")))
+                                       "js2-mode"
+                                       "yaml-mode"
+                                       "markdown-mode"
+                                       "s.el" ; required by docker-file
+                                       "dockerfile-mode")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -120,8 +124,29 @@
 (bash-completion-setup)
 (global-set-key [f7] 'shell)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; YAML
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Markdown
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+(autoload 'gfm-mode "markdown-mode"
+   "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Dockerfile
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
 
 

@@ -7,3 +7,15 @@
 [submodule "lisp/js2-mode"]
 	path = lisp/js2-mode
 	url = https://github.com/mooz/js2-mode.git
+[submodule "lisp/yaml-mode"]
+	path = lisp/yaml-mode
+	url = https://github.com/yoshiki/yaml-mode
+[submodule "lisp/markdown-mode"]
+	path = lisp/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode.git
+[submodule "lisp/dockerfile-mode"]
+	path = lisp/dockerfile-mode
+	url = https://github.com/spotify/dockerfile-mode.git
+[submodule "lisp/s.el"]
+	path = lisp/s.el
+	url = https://github.com/magnars/s.el.git
