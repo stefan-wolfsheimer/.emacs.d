@@ -19,3 +19,6 @@
 [submodule "lisp/s.el"]
 	path = lisp/s.el
 	url = https://github.com/magnars/s.el.git
+[submodule "lisp/cucumber.el"]
+	path = lisp/cucumber.el
+	url = https://github.com/michaelklishin/cucumber.el.git
