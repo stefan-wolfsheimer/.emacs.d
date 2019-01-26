@@ -1,18 +1,37 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; load paths
 ;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (let ((default-directory  "~/.emacs.d/lisp/"))
   (normal-top-level-add-to-load-path '("emacs-neotree" 
                                        "column-marker"
                                        "emacs-bash-completion"
                                        "js2-mode"
+                                       "hierarchy" ; required by json-navigator
+                                       "json-navigator"
                                        "yaml-mode"
                                        "markdown-mode"
                                        "s.el" ; required by docker-file
                                        "dockerfile-mode"
                                        "cucumber.el"
-                                       "irods")))
+                                       "irods-contrib/irods-mode"
+                                       "geiser")))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; melpa
+;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+
+;; M-x package-refresh-contents RET
+;; M-x package-install RET magit RET
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; neotree
@@ -80,6 +99,13 @@
 (add-hook 'js-mode-hook 
           (lambda () 
             (interactive) (column-marker-1 80)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Json Navigator
+;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'json-navigator)
+; (global-set-key [f8] 'neotree-toggle)
+; (setq neo-window-width 60)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; c mode
@@ -158,6 +184,13 @@
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; iRODS mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'irods-mode)
+(add-to-list 'auto-mode-alist '("\.r$" . irdos-mode))
+
+
 
 
 
@@ -167,6 +200,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (magit geiser)))
  '(send-mail-function (quote smtpmail-send-it)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -176,6 +210,8 @@
  )
 
 
-(require 'irods-mode)
-(add-to-list 'auto-mode-alist '("\.r$" . irdos-mode))
+;;(global-set-key (kbd "C-x g") 'magit-status)
 
+
+
+;(require 'git-emacs)

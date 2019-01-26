@@ -22,3 +22,15 @@
 [submodule "lisp/cucumber.el"]
 	path = lisp/cucumber.el
 	url = https://github.com/michaelklishin/cucumber.el.git
+[submodule "lisp/json-navigator"]
+	path = lisp/json-navigator
+	url = https://github.com/DamienCassou/json-navigator.git
+[submodule "lisp/hierarchy"]
+	path = lisp/hierarchy
+	url = https://github.com/DamienCassou/hierarchy.git
+[submodule "lisp/geiser"]
+	path = lisp/geiser
+	url = git://git.sv.gnu.org/geiser.git
+[submodule "lisp/irods-contrib"]
+	path = lisp/irods-contrib
+	url = https://github.com/irods/contrib.git
