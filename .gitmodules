@@ -34,3 +34,9 @@
 [submodule "lisp/irods-contrib"]
 	path = lisp/irods-contrib
 	url = https://github.com/irods/contrib.git
+[submodule "lisp/php-mode"]
+	path = lisp/php-mode
+	url = https://github.com/emacs-php/php-mode.git
+[submodule "lisp/mu4e-maildirs-extension"]
+	path = lisp/mu4e-maildirs-extension
+	url = https://github.com/agpchil/mu4e-maildirs-extension.git

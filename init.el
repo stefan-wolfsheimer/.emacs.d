@@ -21,7 +21,9 @@
                                        "dockerfile-mode"
                                        "cucumber.el"
                                        "irods-contrib/irods-mode"
-                                       "geiser")))
+                                       "geiser"
+                                       "php-mode"
+                                       "mu4e-maildirs-extension")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; melpa
@@ -30,8 +32,22 @@
 (add-to-list 'package-archives
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
+
+
+
 ;; M-x package-refresh-contents RET
 ;; M-x package-install RET magit RET
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; trello
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;; M-x package-refresh-contents RET
+;; M-x package-install RET org-trello
+(require 'org-trello)
+(custom-set-variables '(org-trello-files '("~/Trello/backlog.org")))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; neotree
@@ -86,6 +102,10 @@
 (global-set-key (kbd "C-c SPC") (function (lambda () 
                                             (interactive) 
                                             (whitespace-mode 0))))
+
+;(define-key hs-minor-mode-map (kbd "C-.")
+;  (lookup-key hs-minor-mode-map (kbd "C-c @ C-c")))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; javascript
@@ -190,7 +210,12 @@
 (require 'irods-mode)
 (add-to-list 'auto-mode-alist '("\.r$" . irdos-mode))
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; PHP mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(autoload 'php-mode "php-mode" "Major mode for editing PHP code." t)
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
 
 
@@ -200,8 +225,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (magit geiser)))
+ '(package-selected-packages (quote (org-trello ebib magit geiser)))
  '(send-mail-function (quote smtpmail-send-it)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -209,9 +235,24 @@
  ;; If there is more than one, they won't work right.
  )
 
+;;;;;;;;;;;;;;;;;;
+;; mail
+;;;;;;;;;;;;;;;;;;
+(cond ((file-exists-p "~/.emacs.d/smpt.el")
+       (add-to-list 'load-path "/usr/share/emacs25/site-lisp/mu4e")
+       (require 'mu4e)
+       (require 'smtpmail)
+       (require 'starttls)
+       (require 'mu4e-maildirs-extension)
+       (mu4e-maildirs-extension)
+       (setq message-kill-buffer-on-exit t)
+       (setq mu4e-compose-complete-addresses  t)
+       (setq mu4e-update-interval 60)
+       (global-set-key [f9] 'mu4e)
+       (setq mu4e-maildir-shortcuts '(("/Zimbra/INBOX"     . ?i)
+                                      ("/sent"        . ?s)))
+       (load "~/.emacs.d/smpt.el")))
 
-;;(global-set-key (kbd "C-x g") 'magit-status)
 
 
 
-;(require 'git-emacs)
