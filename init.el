@@ -23,7 +23,10 @@
                                        "irods-contrib/irods-mode"
                                        "geiser"
                                        "php-mode"
-                                       "mu4e-maildirs-extension")))
+                                       "mu4e-maildirs-extension"
+                                       "org-caldav"
+                                       ;"emacs-calfw"
+                                       )))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; melpa
@@ -46,7 +49,15 @@
 ;; M-x package-refresh-contents RET
 ;; M-x package-install RET org-trello
 (require 'org-trello)
-(custom-set-variables '(org-trello-files '("~/Trello/backlog.org")))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
+ '(org-trello-files (quote ("~/Trello/backlog.org")) nil (org-trello))
+ '(package-selected-packages (quote (excorporate org-trello ebib magit geiser)))
+ '(send-mail-function (quote smtpmail-send-it)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -220,13 +231,7 @@
 
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (org-trello ebib magit geiser)))
- '(send-mail-function (quote smtpmail-send-it)))
+
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -236,23 +241,14 @@
  )
 
 ;;;;;;;;;;;;;;;;;;
-;; mail
+;; org mode
 ;;;;;;;;;;;;;;;;;;
-(cond ((file-exists-p "~/.emacs.d/smpt.el")
-       (add-to-list 'load-path "/usr/share/emacs25/site-lisp/mu4e")
-       (require 'mu4e)
-       (require 'smtpmail)
-       (require 'starttls)
-       (require 'mu4e-maildirs-extension)
-       (mu4e-maildirs-extension)
-       (setq message-kill-buffer-on-exit t)
-       (setq mu4e-compose-complete-addresses  t)
-       (setq mu4e-update-interval 60)
-       (global-set-key [f9] 'mu4e)
-       (setq mu4e-maildir-shortcuts '(("/Zimbra/INBOX"     . ?i)
-                                      ("/sent"        . ?s)))
-       (load "~/.emacs.d/smpt.el")))
+(add-to-list 'auto-mode-alist '("\\.org.txt$" . org-mode))
 
-
-
+;;;;;;;;;;;;;;;;;;
+;; calendar
+;;;;;;;;;;;;;;;;;;
+;(require 'org-caldav)
+;(require 'calfw-org)
+;M-x package-install RET excorporate
 

@@ -40,3 +40,9 @@
 [submodule "lisp/mu4e-maildirs-extension"]
 	path = lisp/mu4e-maildirs-extension
 	url = https://github.com/agpchil/mu4e-maildirs-extension.git
+[submodule "lisp/emacs-calfw"]
+	path = lisp/emacs-calfw
+	url = https://github.com/kiwanami/emacs-calfw.git
+[submodule "lisp/org-caldav"]
+	path = lisp/org-caldav
+	url = https://github.com/dengste/org-caldav.git
