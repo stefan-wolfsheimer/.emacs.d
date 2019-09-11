@@ -48,16 +48,6 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 ;; M-x package-refresh-contents RET
 ;; M-x package-install RET org-trello
-(require 'org-trello)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
- '(org-trello-files (quote ("~/Trello/backlog.org")) nil (org-trello))
- '(package-selected-packages (quote (excorporate org-trello ebib magit geiser)))
- '(send-mail-function (quote smtpmail-send-it)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -252,3 +242,5 @@
 ;(require 'calfw-org)
 ;M-x package-install RET excorporate
 
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
