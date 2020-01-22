@@ -86,6 +86,12 @@
 (global-set-key [M-right] 'windmove-right) 
 (global-set-key [M-up] 'windmove-up) 
 (global-set-key [M-down] 'windmove-down)
+(global-set-key [f3] 'windmove-left)
+(global-set-key [f4] 'windmove-right)
+(global-set-key [f5] 'windmove-up)
+(global-set-key [f6] 'windmove-down)
+
+
 
 (global-set-key (kbd "C-c o") 'ff-find-other-file)
 
