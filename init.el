@@ -73,7 +73,7 @@
 (setq js-indent-level 2)
 (add-hook 'js-mode-hook 
           (lambda () 
-            (interactive) (column-marker-1 80)))
+            (interactive) (column-marker-1 120)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; c mode
@@ -85,7 +85,7 @@
             (c-set-offset 'substatement-open 0)))
 (add-hook 'c-mode-hook 
           (lambda () 
-            (interactive) (column-marker-1 80)))
+            (interactive) (column-marker-1 120)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; c++ mode
@@ -93,10 +93,10 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-hook 'c++-mode-hook 
           (lambda () 
-            (c-set-offset 'innamespace 0)))
+            (c-set-offset 'innamespace 2)))
 (add-hook 'c++-mode-hook 
           (lambda () 
-            (interactive) (column-marker-1 80)))
+            (interactive) (column-marker-1 120)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -104,7 +104,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'python-mode-hook 
           (lambda () 
-            (interactive) (column-marker-1 80)))
+            (interactive) (column-marker-1 120)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emacs lisp mode
@@ -122,6 +122,39 @@
 
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Common Lisp / SLIME
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(setq inferior-lisp-program "sbcl")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; fortran
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq auto-mode-alist
+      (cons '("\\.F90$" . f90-mode) auto-mode-alist))
+(setq auto-mode-alist
+      (cons '("\\.pf$" . f90-mode) auto-mode-alist))
+(setq auto-mode-alist
+      (cons '("\\.fpp$" . f90-mode) auto-mode-alist))
+(setq auto-mode-alist
+      (cons '("\\.F$" . f90-mode) auto-mode-alist))
+(setq auto-mode-alist
+      (cons '("\\.f$" . f90-mode) auto-mode-alist))
+
+;; Fortran settings
+(setq fortran-continuation-string "&")
+(setq fortran-do-indent 2)
+(setq fortran-if-indent 2)
+(setq fortran-structure-indent 2)
+
+;; Fortran 90 settings
+(setq f90-do-indent 2)
+(setq f90-if-indent 2)
+(setq f90-type-indent 2)
+(setq f90-program-indent 2 o)
+(setq f90-continuation-indent 4)
+(setq f90-smart-end 'blink)
 
 
 
