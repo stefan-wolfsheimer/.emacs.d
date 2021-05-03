@@ -1,11 +1,53 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; load paths
 ;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (let ((default-directory  "~/.emacs.d/lisp/"))
   (normal-top-level-add-to-load-path '("emacs-neotree" 
                                        "column-marker"
                                        "emacs-bash-completion"
-                                       "js2-mode")))
+                                       "js2-mode"
+                                       "hierarchy" ; required by json-navigator
+                                       "json-navigator"
+                                       "yaml-mode"
+                                       "markdown-mode"
+                                       "s.el" ; required by docker-file
+                                       "dockerfile-mode"
+                                       "cucumber.el"
+                                       "irods-contrib/irods-mode"
+                                       "geiser"
+                                       "php-mode"
+                                       "mu4e-maildirs-extension"
+                                       "org-caldav"
+                                       ;"emacs-calfw"
+                                       )))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; melpa
+;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+
+
+
+
+;; M-x package-refresh-contents RET
+;; M-x package-install RET magit RET
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; trello
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;; M-x package-refresh-contents RET
+;; M-x package-install RET org-trello
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -29,6 +71,18 @@
 (setq-default indent-tabs-mode nil)
 (setq column-number-mode t)
 (setq whitespace-style '(spaces tabs newline space-mark tab-mark newline-mark))
+
+(defun disable-tabs ()
+  "use spaces instead of space"
+  (interactive)
+  (setq indent-tabs-mode nil))
+
+(defun enable-tabs  ()
+  "use tabs instead of space"
+  (interactive)
+  ; (local-set-key (kbd "TAB") 'tab-to-tab-stop)
+  (setq indent-tabs-mode t)
+  (setq tab-width custom-tab-width))
 ;(global-whitespace-toggle-options 1)
 ;(global-whitespace-mode 1)
 
@@ -44,6 +98,12 @@
 (global-set-key [M-right] 'windmove-right) 
 (global-set-key [M-up] 'windmove-up) 
 (global-set-key [M-down] 'windmove-down)
+(global-set-key [f3] 'windmove-left)
+(global-set-key [f4] 'windmove-right)
+(global-set-key [f5] 'windmove-up)
+(global-set-key [f6] 'windmove-down)
+
+
 
 (global-set-key (kbd "C-c o") 'ff-find-other-file)
 
@@ -62,6 +122,10 @@
                                             (interactive) 
                                             (whitespace-mode 0))))
 
+;(define-key hs-minor-mode-map (kbd "C-.")
+;  (lookup-key hs-minor-mode-map (kbd "C-c @ C-c")))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; javascript
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -74,6 +138,13 @@
 (add-hook 'js-mode-hook 
           (lambda () 
             (interactive) (column-marker-1 120)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Json Navigator
+;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'json-navigator)
+; (global-set-key [f8] 'neotree-toggle)
+; (setq neo-window-width 60)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; c mode
@@ -120,6 +191,66 @@
 (bash-completion-setup)
 (global-set-key [f7] 'shell)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; YAML
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.sls\\'" . yaml-mode))
+(global-set-key [f10]  (lambda ()
+                         (interactive)
+                         (cond ((= yaml-indent-offset 2)
+                                (setq yaml-indent-offset 4))
+                               ((= yaml-indent-offset 4)
+                                (setq yaml-indent-offset 2)))
+                         (print yaml-indent-offset)))
+;(setq yaml-indent-offset 4)
+(setq yaml-indent-offset 2)
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Markdown
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(autoload 'gfm-mode "markdown-mode"
+   "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Dockerfile
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; User story
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'feature-mode)
+(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; iRODS mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'irods-mode)
+(add-to-list 'auto-mode-alist '("\.r$" . irdos-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; PHP mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(autoload 'php-mode "php-mode" "Major mode for editing PHP code." t)
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -157,6 +288,26 @@
 (setq f90-smart-end 'blink)
 
 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
+;;;;;;;;;;;;;;;;;;
+;; org mode
+;;;;;;;;;;;;;;;;;;
+(add-to-list 'auto-mode-alist '("\\.org.txt$" . org-mode))
 
+;;;;;;;;;;;;;;;;;;
+;; calendar
+;;;;;;;;;;;;;;;;;;
+;(require 'org-caldav)
+;(require 'calfw-org)
+;M-x package-install RET excorporate
 
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)

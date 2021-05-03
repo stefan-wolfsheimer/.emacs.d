@@ -7,3 +7,42 @@
 [submodule "lisp/js2-mode"]
 	path = lisp/js2-mode
 	url = https://github.com/mooz/js2-mode.git
+[submodule "lisp/yaml-mode"]
+	path = lisp/yaml-mode
+	url = https://github.com/yoshiki/yaml-mode
+[submodule "lisp/markdown-mode"]
+	path = lisp/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode.git
+[submodule "lisp/dockerfile-mode"]
+	path = lisp/dockerfile-mode
+	url = https://github.com/spotify/dockerfile-mode.git
+[submodule "lisp/s.el"]
+	path = lisp/s.el
+	url = https://github.com/magnars/s.el.git
+[submodule "lisp/cucumber.el"]
+	path = lisp/cucumber.el
+	url = https://github.com/michaelklishin/cucumber.el.git
+[submodule "lisp/json-navigator"]
+	path = lisp/json-navigator
+	url = https://github.com/DamienCassou/json-navigator.git
+[submodule "lisp/hierarchy"]
+	path = lisp/hierarchy
+	url = https://github.com/DamienCassou/hierarchy.git
+[submodule "lisp/geiser"]
+	path = lisp/geiser
+	url = git://git.sv.gnu.org/geiser.git
+[submodule "lisp/irods-contrib"]
+	path = lisp/irods-contrib
+	url = https://github.com/irods/contrib.git
+[submodule "lisp/php-mode"]
+	path = lisp/php-mode
+	url = https://github.com/emacs-php/php-mode.git
+[submodule "lisp/mu4e-maildirs-extension"]
+	path = lisp/mu4e-maildirs-extension
+	url = https://github.com/agpchil/mu4e-maildirs-extension.git
+[submodule "lisp/emacs-calfw"]
+	path = lisp/emacs-calfw
+	url = https://github.com/kiwanami/emacs-calfw.git
+[submodule "lisp/org-caldav"]
+	path = lisp/org-caldav
+	url = https://github.com/dengste/org-caldav.git
