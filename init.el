@@ -71,6 +71,18 @@
 (setq-default indent-tabs-mode nil)
 (setq column-number-mode t)
 (setq whitespace-style '(spaces tabs newline space-mark tab-mark newline-mark))
+
+(defun disable-tabs ()
+  "use spaces instead of space"
+  (interactive)
+  (setq indent-tabs-mode nil))
+
+(defun enable-tabs  ()
+  "use tabs instead of space"
+  (interactive)
+  ; (local-set-key (kbd "TAB") 'tab-to-tab-stop)
+  (setq indent-tabs-mode t)
+  (setq tab-width custom-tab-width))
 ;(global-whitespace-toggle-options 1)
 ;(global-whitespace-mode 1)
 
@@ -184,6 +196,20 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.sls\\'" . yaml-mode))
+(global-set-key [f10]  (lambda ()
+                         (interactive)
+                         (cond ((= yaml-indent-offset 2)
+                                (setq yaml-indent-offset 4))
+                               ((= yaml-indent-offset 4)
+                                (setq yaml-indent-offset 2)))
+                         (print yaml-indent-offset)))
+;(setq yaml-indent-offset 4)
+(setq yaml-indent-offset 2)
+
+
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Markdown
@@ -250,3 +276,5 @@
 
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
