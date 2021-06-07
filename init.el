@@ -256,8 +256,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Common Lisp / SLIME
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
-(setq inferior-lisp-program "sbcl")
+; (load (expand-file-name "~/quicklisp/slime-helper.el"))
+; (setq inferior-lisp-program "sbcl")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; fortran
@@ -283,7 +283,7 @@
 (setq f90-do-indent 2)
 (setq f90-if-indent 2)
 (setq f90-type-indent 2)
-(setq f90-program-indent 2 o)
+(setq f90-program-indent 2)
 (setq f90-continuation-indent 4)
 (setq f90-smart-end 'blink)
 
